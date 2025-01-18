@@ -1,6 +1,7 @@
 import allure
 
 from data import Urls
+from locators.main_page_locators import MainPageLocators
 from locators.reset_password_page_locators import ResetPasswordPageLocators
 from pages.base_page import BasePage
 
@@ -19,4 +20,4 @@ class ResetPasswordPage(BasePage):
 
     @allure.step('Клик на иконку показа пароля')
     def click_icon_in_field_password(self):
-        self.click_element(ResetPasswordPageLocators.EYE_INPUT_ICON)
+        self.click_element(MainPageLocators.LOADING_ANIMATION, ResetPasswordPageLocators.EYE_INPUT_ICON)

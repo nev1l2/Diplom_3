@@ -12,3 +12,5 @@ class MainPageLocators:
     ORDER_NUMBER_IN_POPUP_WINDOW = By.XPATH, "//h2[contains(@class,'title_shadow')]"
     INGREDIENT_NAME_IN_DETAILS_WINDOW = By.XPATH, "//*[contains(@class, 'Modal_modal_opened')]/div/div/p"
     ORDER_STATUS_START_TO_PREPARE = By.XPATH, "//*[contains(@class, 'Modal_modal__text')]/p[1]"
+
+    LOADING_ANIMATION = By.XPATH, "//*[@alt='loading animation']/parent::div"

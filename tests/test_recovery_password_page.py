@@ -5,12 +5,12 @@ class TestPasswordRecoveryPage:
 
     @allure.title('Навигация на страницу восстановления пароля')
     @allure.description('Проверка навигации на страницу восстановления пароля через кнопку «Восстановить пароль»')
-    def test_navigate_to_password_recovery_page(self, driver, login_page, forgot_password_page):
+    def test_navigate_to_password_recovery_page(self, login_page, forgot_password_page):
         login_page.open_login_page()
         login_page.click_link_recovery_password()
         with allure.step(f'Верификация перехода на url {forgot_password_page.URL}'):
 
-            assert driver.current_url == forgot_password_page.URL
+            assert login_page.current_url == forgot_password_page.URL
 
     @allure.title('Восстановление пароля с использованием электронной почты')
     @allure.description('Проверка ввода электронной почты и нажатия кнопки «Восстановить»')
@@ -21,7 +21,7 @@ class TestPasswordRecoveryPage:
         reset_password_page.wait_load_page()
         with allure.step(f'Верификация перехода на url {reset_password_page.URL}'):
 
-            assert driver.current_url == reset_password_page.URL
+            assert forgot_password_page.current_url == reset_password_page.URL
 
     @allure.title('Активация поля для пароля при нажатии кнопки показать/скрыть')
     @allure.description('Проверка, что нажатие кнопки показать/скрыть пароль делает поле активным')

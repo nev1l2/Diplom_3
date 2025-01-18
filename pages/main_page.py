@@ -12,7 +12,7 @@ class MainPage(BasePage):
 
     @allure.step('Открываем главную страницу')
     def open_main_page(self):
-        self.open_url(Urls.BASE_URL)
+        self.open_url(MainPageLocators.LOADING_ANIMATION, Urls.BASE_URL)
         self.wait_visibility(MainPageLocators.LIST_OF_INGREDIENTS)
 
     @allure.step('Выбираем ингредиент')
@@ -22,7 +22,7 @@ class MainPage(BasePage):
 
     @allure.step('Закрываем всплывающее окно')
     def click_cross_button_in_popup_window(self):
-        self.click_element(MainPageLocators.CLOSE_POPUP_WINDOW_BUTTON)
+        self.click_element(MainPageLocators.LOADING_ANIMATION, MainPageLocators.CLOSE_POPUP_WINDOW_BUTTON)
 
     @allure.step('Добавляем ингредиент в заказ')
     def add_ingredient_to_order(self, index):
@@ -32,7 +32,7 @@ class MainPage(BasePage):
 
     @allure.step('Кликаем на кнопку оформления заказа')
     def click_place_order_button(self):
-        self.click_element(MainPageLocators.ORDER_BUTTON)
+        self.click_element(MainPageLocators.LOADING_ANIMATION, MainPageLocators.ORDER_BUTTON)
 
     @allure.step('Получаем название ингредиента')
     def get_ingredient_name_by_index_(self, index):
@@ -69,7 +69,7 @@ class MainPage(BasePage):
         self.add_ingredient_to_order(0)
         self.add_ingredient_to_order(3)
         self.click_place_order_button()
-        self.wait_loading()
+        self.wait_loading(MainPageLocators.LOADING_ANIMATION)
         order_number = self.get_order_number_from_confirm_popup()
         self.click_cross_button_in_popup_window()
 

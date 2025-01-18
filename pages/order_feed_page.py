@@ -1,6 +1,7 @@
 import allure
 
 from data import Urls
+from locators.main_page_locators import MainPageLocators
 from locators.order_feed_page_locators import OrdersFeedPageLocators
 from pages.base_page import BasePage
 
@@ -12,7 +13,7 @@ class OrderFeedPage(BasePage):
 
     def open_order_feed_page(self):
         with allure.step(f'Открываем страницу {self.URL}'):
-            self.open_url(self.URL)
+            self.open_url(MainPageLocators.LOADING_ANIMATION, self.URL)
 
     @allure.step('Кликаем на заказ')
     def click_orders_by_index_(self, index):
@@ -50,3 +51,8 @@ class OrderFeedPage(BasePage):
     @allure.step('Дожидаемся загрузки страницы')
     def wait_load_page(self):
         self.wait_visibility(OrdersFeedPageLocators.ORDERS_LIST)
+
+    @allure.step('Проверяем наличие заказа')
+    def are_all_orders_present(self, client_orders):
+        feed_orders = self.get_orders_number()
+        return all(order_number in feed_orders for order_number in client_orders)

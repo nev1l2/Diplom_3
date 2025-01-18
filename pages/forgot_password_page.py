@@ -2,6 +2,7 @@ import allure
 
 from data import Urls
 from locators.forgot_password_page_locators import ForgotPasswordPageLocators
+from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
 
 
@@ -12,7 +13,7 @@ class ForgotPasswordPage(BasePage):
 
     @allure.step('Открываем страницу восстановления пароля')
     def open_forgot_password_page(self):
-        self.open_url(self.URL)
+        self.open_url(MainPageLocators.LOADING_ANIMATION,self.URL)
 
     @allure.step('Вводим E-mail {email}')
     def fill_email_field(self, email):
@@ -20,4 +21,4 @@ class ForgotPasswordPage(BasePage):
 
     @allure.step('Нажимаем кнопку "Восстановить"')
     def click_button_recovery(self):
-        self.click_element(ForgotPasswordPageLocators.BUTTON_RECOVERY)
+        self.click_element(MainPageLocators.LOADING_ANIMATION,ForgotPasswordPageLocators.BUTTON_RECOVERY)

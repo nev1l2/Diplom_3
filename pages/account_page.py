@@ -2,6 +2,7 @@ import allure
 
 from data import Urls
 from locators.account_page_locators import AccountPageLocators
+from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
 
 
@@ -16,8 +17,8 @@ class AccountPage(BasePage):
 
     @allure.step('Нажимаем на ссылку "История заказов"')
     def click_link_order_history(self):
-        self.click_element(AccountPageLocators.ORDERS_HISTORY_MENU)
+        self.click_element(MainPageLocators.LOADING_ANIMATION, AccountPageLocators.ORDERS_HISTORY_MENU)
 
     @allure.step("Нажимаем на кнопку 'Выход'")
     def click_button_exit(self):
-        self.click_element(AccountPageLocators.EXIT_BUTTON)
+        self.click_element(MainPageLocators.LOADING_ANIMATION, AccountPageLocators.EXIT_BUTTON)

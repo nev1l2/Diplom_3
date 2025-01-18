@@ -2,6 +2,8 @@ import allure
 
 from data import Urls
 from locators.login_page_locators import LoginPageLocators
+from locators.main_page_locators import MainPageLocators
+from locators.reset_password_page_locators import ResetPasswordPageLocators
 from pages.base_page import BasePage
 
 
@@ -12,7 +14,7 @@ class LoginPage(BasePage):
 
     @allure.step('Открываем страницу авторизации')
     def open_login_page(self):
-        self.open_url(Urls.LOGIN_URL)
+        self.open_url(MainPageLocators.LOADING_ANIMATION, Urls.LOGIN_URL)
 
     @allure.step('Дожидаемся полной загрузки страницы')
     def wait_loading_page(self):
@@ -20,15 +22,15 @@ class LoginPage(BasePage):
 
     @property
     def get_password_field(self):
-        return self.get_visible_element(LoginPageLocators.INACTIVE_PASSWORD_FIELD)
+        return self.get_visible_element(ResetPasswordPageLocators.INACTIVE_PASSWORD_FIELD)
 
     @allure.step('Клик на иконку показа пароля')
     def click_icon_in_field_password(self):
-        self.click_element(LoginPageLocators.EYE_INPUT_ICON)
+        self.click_element(MainPageLocators.LOADING_ANIMATION,LoginPageLocators.EYE_INPUT_ICON)
 
     @allure.step('Нажимаем на ссылку "Восстановить пароль"')
     def click_link_recovery_password(self):
-        self.click_element(LoginPageLocators.PASS_RECOVERY_LINK)
+        self.click_element(MainPageLocators.LOADING_ANIMATION, LoginPageLocators.PASS_RECOVERY_LINK)
 
     @allure.step('Заполняем поле E-mail {email}')
     def fill_email_field(self, email):
@@ -40,7 +42,7 @@ class LoginPage(BasePage):
 
     @allure.step('Нажимаем на кнопку "Войти"')
     def click_button_enter(self):
-        self.click_element(LoginPageLocators.BUTTON_LOGIN)
+        self.click_element(MainPageLocators.LOADING_ANIMATION, LoginPageLocators.BUTTON_LOGIN)
 
     @allure.step('Логинимся')
     def logining_user(self, login_details):

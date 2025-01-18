@@ -19,4 +19,3 @@ class Urls:
     USER_delete = f'{BASE_URL}api/auth/user'
 
 SET_TIMEOUT = 10
-LOADING_ANIMATION = By.XPATH, "//*[@alt='loading animation']/parent::div"

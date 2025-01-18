@@ -6,22 +6,22 @@ class TestMainPage:
 
     @allure.title('Навигация в Конструктор')
     @allure.description('Проверка осуществления перехода по нажатию на «Конструктор»')
-    def test_navigate_to_constructor(self, driver, main_page, switch_page):
+    def test_navigate_to_constructor(self, main_page, switch_page):
         main_page.open_main_page()
         switch_page.click_orders_feed_button()
         switch_page.click_constructor_button()
 
         with allure.step(f'Проверяем переход на URL {main_page.URL}'):
-            assert driver.current_url == main_page.URL
+            assert main_page.current_url == main_page.URL
 
     @allure.title('Навигация в Ленту заказов')
     @allure.description('Проверка осуществления перехода по нажатию на «Лента заказов»')
-    def test_navigate_to_order_feed(self, driver, switch_page, main_page, order_feed_page):
+    def test_navigate_to_order_feed(self, switch_page, main_page, order_feed_page):
         main_page.open_main_page()
         switch_page.click_orders_feed_button()
 
         with allure.step(f'Проверяем переход на URL {order_feed_page.URL}'):
-            assert driver.current_url == order_feed_page.URL
+            assert switch_page.current_url == order_feed_page.URL
 
     @allure.title('Показ деталей ингредиента')
     @allure.description('Проверка появления поп-апа с деталями при нажатии на ингредиент')

@@ -23,10 +23,8 @@ class TestOrderFeedPage:
         account_page.click_link_order_history()
         client_orders = orders_history_page.get_order_numbers()
         order_feed_page.open_order_feed_page()
-        feed_orders = order_feed_page.get_orders_number()
-        for order_number in client_orders:
-            with allure.step(f'Проверяем наличие заказа {order_number} в «Лента заказов»'):
-                assert order_number in feed_orders
+        with allure.step('Проверяем наличие заказов в «Лента заказов»'):
+            assert order_feed_page.are_all_orders_present(client_orders)
 
     @allure.title('Увеличение счетчика «Завершено за все время»')
     @allure.description('Проверка увеличения счетчика «Завершено за все время» при создании нового заказа')

@@ -2,6 +2,7 @@ import allure
 
 from data import Urls
 from locators.history_orders_page_locators import HistoryOrdersPageLocators
+from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
 
 
@@ -12,7 +13,7 @@ class OrderHistoryPage(BasePage):
 
     @allure.step('Открываем страницу истории заказов пользователя {self.URL}')
     def open_order_history_page(self):
-        self.open_url(self.URL)
+        self.open_url(MainPageLocators.LOADING_ANIMATION, self.URL)
 
     @allure.step('Получаем номера заказов пользователя из Истории заказов')
     def get_order_numbers(self):
